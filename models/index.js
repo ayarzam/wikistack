@@ -51,6 +51,26 @@ const User = db.define('user', {
   }
 })
 
+function slug (title) {
+  if(!title){
+    console.log(Math.random().toString(36).substring(7))
+    return Math.random().toString(36).substring(7);
+  }
+  var regex = / /gi;
+  console.log(title.replace(regex, "_"))
+  return title.replace(regex, "_");
+}
+
+
+
+Page.beforeValidate((pageInstance) => {
+  let slugFromTitle = slug(Page.title);
+  return Page.slug({
+    where: {
+      slug : slugFromTitle
+    }
+  })
+})
 
 
 module.exports = {
