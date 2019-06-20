@@ -47,7 +47,7 @@ const User = db.define('user', {
       // }
       isEmail: true
     },
-    unique: true,
+    // unique: true,
   }
 })
 

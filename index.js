@@ -3,11 +3,14 @@ const morgan = require("morgan");
 const layout = require("./views/layout");
 const addPage = require("./views/addPage");
 const models = require('./models');
-// const user = require("./routes/user");
-// const wiki = require("./routes/wiki");
+const wikiRouter = require('./routes/wiki');
+// const userRouter = require('./routes/user');
+
 // const goToIndex = require("./views/index");
 const app = express();
 
+app.use('/wiki/', wikiRouter);
+// app.use('/user', userRouter);
 
 
 app.use(morgan("dev"));
@@ -29,16 +32,15 @@ app.get("/add", (req, res, next)=> {
   res.send(layout(""));
 })
 
-app.post("/", (req, res, next)=> {
-  res.redirect("/wiki/");
+// app.post("/", async (req, res, next)=> {
+//   res.redirect("/wiki/");
   // res.send(layout(""));
   // res.send(addPage(name, email, content, status))
-
-  const name = req.body.name;
-  const title = req.body.email;
-  const content = req.body.content;
-  const status = req.body.status;
-})
+  // const person = new User({
+  //   name: "Kate",
+  //   pictureUrl: "http://fillmurrary.com/10/10"
+  // });
+// })
 
 //defining wiki
 app.get("/wiki/", (req, res, next)=> {
@@ -50,6 +52,30 @@ app.get("/wiki/add", (req, res, next)=> {
   res.send(addPage());
 })
 
+
+app.post("/wiki/", async (req, res, next)=> {
+  // res.send(addPage());
+  console.log('title', req.body.title)
+  console.log('body', req.body)
+  // res.send('hello world');
+
+  res.send(req.body);
+})
+
+// app.post("/wiki/add", async (req, res, next)=> {
+//   // res.send(addPage());
+//   // console.log(req.body.name);
+//   // const name = new User ({
+//   //   name: req.body.name,
+//   //   email: req.body.email
+//   // })
+//   //page title
+//   console.log(req.body.title)
+//   console.log(req.body)
+//   res.send('hello world');
+
+//   // await name.save();
+// })
 
 
 

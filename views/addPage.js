@@ -6,9 +6,14 @@ module.exports = () => layout(html`
   <hr>
   <form method="POST" action="/wiki/">
 
-    <div>${name}</div>
-
-    <div>${email}</div>
+    <label for="title" class="col-sm-2 control-label">Name</label>
+    <div class="col-sm-10">
+      <input id="title" name="name" type="text" class="form-control"/>
+    </div>
+    <label for="title" class="col-sm-2 control-label">Email</label>
+      <div class="col-sm-10">
+        <input id="title" name="email" type="text" class="form-control"/>
+      </div>
 
     <div class="form-group">
       <label for="title" class="col-sm-2 control-label">Page Title</label>
@@ -17,9 +22,15 @@ module.exports = () => layout(html`
       </div>
     </div>
 
-    <div>${content}</div>
+    <label for="title" class="col-sm-2 control-label">Content</label>
+      <div class="col-sm-10">
+        <textarea id="title" name="content" type="text" class="form-control"></textarea>
+      </div>
 
-    <div>${status}</div>
+      <label for="title" class="col-sm-2 control-label">Status</label>
+      <div class="col-sm-10">
+        <input id="title" name="status" type="text" class="form-control"/>
+      </div>
 
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-primary">submit</button>
